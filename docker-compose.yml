@@ -20,6 +20,8 @@ services:
       context: .
     container_name: ${APP_NAME}_php
     restart: always
+    env_file:
+      - backend/.env
     volumes:
       - ./docker/php/conf/php.ini:/usr/local/etc/php/conf.d/php.ini
       - ./docker/php/conf/xdebug.ini:/usr/local/etc/php/conf.d/xdebug.ini
@@ -39,4 +41,4 @@ services:
     ports:
       - 5432:5432
     volumes:
-      - ./docker/postgres/:/var/lib/postgresql/
+      - ./docker/postgres:/var/lib/postgresql/data
